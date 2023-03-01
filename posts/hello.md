@@ -1,6 +1,6 @@
 [category]: <> (General)
-[date]: <> (2020/10/24)
-[title]: <> (Hello world)
+[date]: <> (2023/03/01)
+[title]: <> (Hello world from Tokyo)
 
 This is a blog post!
 

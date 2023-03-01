@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+  <title>asselinpaul</title>
+  <link>https://asselinpaul.com//</link>
+  <description>asselinpaul</description>
+  <image>
+      <url>https://asselinpaul.com/favicon.ico</url>
+      <title>asselinpaul</title>
+      <link>https://asselinpaul.com//</link>
+  </image>
+
+<item>
+<title>Hello world from Tokyo</title>
+<link>https://asselinpaul.com//posts/2023/03/01/hello.html</link>
+<guid>https://asselinpaul.com//posts/2023/03/01/hello.html</guid>
+<pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+<description></description>
+</item>
+
+</channel>
+</rss>
