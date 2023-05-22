@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import os, sys, datetime
 
+dist_folder = "docs"
+
 PRE_HEADER = """
 
 <!DOCTYPE html>
@@ -356,10 +358,10 @@ if __name__ == "__main__":
 
         # Make sure target directory exists
         truncated_path = os.path.split(path)[0]
-        os.system("mkdir -p {}".format(os.path.join("site", truncated_path)))
+        os.system("mkdir -p {}".format(os.path.join(dist_folder, truncated_path)))
 
         # Put it in the desired location
-        out_location = os.path.join("site", path)
+        out_location = os.path.join(dist_folder, path)
         open(out_location, "w").write(total_file_contents)
 
     # Reset ToC
@@ -378,7 +380,7 @@ if __name__ == "__main__":
     sorted_metadatas = sorted(metadatas, key=lambda x: x["date"], reverse=True)
     feed = generate_feed(global_config, sorted_metadatas)
 
-    os.system("mkdir -p {}".format(os.path.join("site", "categories")))
+    os.system("mkdir -p {}".format(os.path.join(dist_folder, "categories")))
 
     print("Building tables of contents...")
 
@@ -396,15 +398,19 @@ if __name__ == "__main__":
             if category in metadata["categories"]
         ]
         toc = make_toc(category_toc_items, global_config, categories, category)
-        open(os.path.join("site", "categories", category + ".html"), "w").write(toc)
+        open(os.path.join(dist_folder, "categories", category + ".html"), "w").write(
+            toc
+        )
 
-    open("site/feed.xml", "w").write(feed)
-    open("site/index.html", "w").write(
+    open(f"{dist_folder}/feed.xml", "w").write(feed)
+    open(f"{dist_folder}/index.html", "w").write(
         make_toc(homepage_toc_items, global_config, categories)
     )
 
     # Copy CSS and scripts files
     this_file_directory = os.path.dirname(__file__)
-    os.system("cp -r {} site/".format(os.path.join(this_file_directory, "css")))
-    os.system("cp -r {} site/".format(os.path.join(this_file_directory, "scripts")))
-    # os.system("rsync -av images site/")
+    css_path = os.path.join(this_file_directory, "css")
+    script_path = os.path.join(this_file_directory, "scripts")
+    os.system(f"cp -r {css_path} {dist_folder}/")
+    os.system(f"cp -r {script_path} {dist_folder}/")
+    # os.system(f"rsync -av images {dist_folder}/")
