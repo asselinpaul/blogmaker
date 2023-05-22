@@ -123,8 +123,6 @@ TITLE_TEMPLATE = """
 TOC_TITLE_TEMPLATE = """
 
 <title> {0} </title>
-<br>
-<center><h1 style="border-bottom:0px"> {0} </h1></center>
 
 """
 
@@ -304,7 +302,7 @@ def make_toc(toc_items, global_config, all_categories, category=None):
         + TOGGLE_COLOR_SCHEME_JS
         + make_twitter_card(title, global_config)
         + TOC_TITLE_TEMPLATE.format(title)
-        + make_categories_header(all_categories, root_path)
+        # + make_categories_header(all_categories, root_path)
         + TOC_START
         + "".join(toc_items)
         + TOC_END
